@@ -31,12 +31,10 @@ struct GameView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let game = GameViewModel()
-//        GameView(viewModel: game)
-//            .preferredColorScheme(.light)
-//        GameView(viewModel: game)
-//            .preferredColorScheme(.dark)
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let game = GameViewModel(theme: ThemeModel(name: "Test theme", numOfPairs: 6, emojis: ["🦁", "🦆", "🦐", "🐸", "🐞", "🦞"], color: "red"))
+        GameView(viewModel: game)
+            .preferredColorScheme(.light)
+    }
+}

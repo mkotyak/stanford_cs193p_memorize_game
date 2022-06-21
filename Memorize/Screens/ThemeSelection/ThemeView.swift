@@ -6,13 +6,13 @@ struct ThemeView: View {
     var body: some View {
         NavigationView {
             List(theme) { theme in
-                NavigationLink(destination: GameView(viewModel: GameViewModel())) {
+                NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme))) {
                     VStack(alignment: .leading) {
                         Text(theme.name)
                             .foregroundColor(ThemeSelectionViewModel.convertColor(color: theme.color))
                             .font(.title)
                         HStack {
-                            ForEach(theme.emojis, id: \.self) { emoji in
+                            ForEach(Set(theme.emojis).sorted(), id: \.self) { emoji in
                                 Text(emoji)
                                     .font(.headline)
                             }
@@ -26,8 +26,10 @@ struct ThemeView: View {
     }
 }
 
-struct ThemeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeView()
-    }
-}
+
+
+//struct ThemeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ThemeView()
+//    }
+//}

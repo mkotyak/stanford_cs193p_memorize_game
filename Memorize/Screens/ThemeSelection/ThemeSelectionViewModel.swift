@@ -15,7 +15,7 @@ class ThemeSelectionViewModel: ObservableObject {
         themes.append(ThemeModel(
             name: "Halloween",
             numOfPairs: 6,
-            emojis: ["💀", "👻", "🎃", "🕸", "🕷", "🦇"],
+            emojis: ["💀", "👻", "🎃", "🕸", "🕷", "🦇", "💀"],
             color: "orange")
         )
 
@@ -32,6 +32,31 @@ class ThemeSelectionViewModel: ObservableObject {
             emojis: ["🚗", "🚌", "🏎", "🚑", "🛴", "🚲", "✈️", "🚀"],
             color: "blue")
         )
+        
+        themes.append(ThemeModel(
+            name: "Flags",
+            numOfPairs: 6,
+            emojis: ["🇺🇦", "🏳️‍🌈", "🇪🇺", "🇺🇸", "🇰🇷", "🇵🇱", "🇷🇴", "🇵🇪"],
+            color: "mint")
+        )
+        
+        themes.append(ThemeModel(
+            name: "Faces",
+            numOfPairs: 6,
+            emojis: ["😃", "😆", "🥹", "😍", "🤩", "😢", "🥳", "😡"],
+            color: "yellow")
+        )
+        
+        themes.append(ThemeModel(
+            name: "Animals",
+            numOfPairs: 6,
+            emojis: ["🐶", "🐱", "🐻‍❄️", "🦁", "🐷", "🦊", "🐻", "🐵"],
+            color: "purple")
+        )
+    }
+    
+    init(newTheme: ThemeModel) {
+        themes.append(newTheme)
     }
     
     static func convertColor(color: String) -> Color {

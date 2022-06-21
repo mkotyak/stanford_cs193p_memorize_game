@@ -11,7 +11,9 @@ import SwiftUI
 struct MemorizeApp: App {
     var body: some Scene {
         WindowGroup {
-            ThemeView()
+            let game = GameViewModel(theme: ThemeModel(name: "Test theme", numOfPairs: 6, emojis: ["🦁", "🦆", "🦐", "🐸", "🐞", "🦞"], color: "red"))
+            GameView(viewModel: game)
+//            ThemeView()
         }
     }
 }
