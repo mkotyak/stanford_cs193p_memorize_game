@@ -1,18 +1,7 @@
-//
-//  ContentView.swift
-//  Memorize
-//
-//  Created by Maria Kotyak on 24.05.2022.
-//
-
 import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
-    
-    init(viewModel: GameViewModel) {
-        self.viewModel = viewModel
-    }
 
     var body: some View {
         ScrollView {
@@ -28,13 +17,14 @@ struct GameView: View {
         }
         .foregroundColor(.red)
         .padding(.horizontal)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = GameViewModel(theme: ThemeModel(name: "Test theme", numOfPairs: 6, emojis: ["🦁", "🦆", "🦐", "🐸", "🐞", "🦞"], color: "red"))
-        GameView(viewModel: game)
-            .preferredColorScheme(.light)
+        .navigationTitle(viewModel.title)
+        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarItems(
+            trailing: Button(action: {
+                viewModel.createNewRandomGame()
+            }, label: {
+                Text("New game")
+            })
+        )
     }
 }

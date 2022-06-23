@@ -1,10 +1,3 @@
-//
-//  Theme.swift
-//  Memorize
-//
-//  Created by Maria Kotyak on 20.06.2022.
-//
-
 import Foundation
 
 struct ThemeModel: Identifiable {

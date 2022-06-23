@@ -1,20 +1,22 @@
 import SwiftUI
 
 struct ThemeView: View {
-    let theme = ThemeSelectionViewModel().themes
+    @ObservedObject var viewModel: ThemeSelectionViewModel
 
     var body: some View {
         NavigationView {
-            List(theme) { theme in
-                NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme))) {
-                    VStack(alignment: .leading) {
-                        Text(theme.name)
-                            .foregroundColor(ThemeSelectionViewModel.convertColor(color: theme.color))
-                            .font(.title)
-                        HStack {
-                            ForEach(Set(theme.emojis).sorted(), id: \.self) { emoji in
-                                Text(emoji)
-                                    .font(.headline)
+            List(viewModel.themes) { theme in
+                ScrollView {
+                    NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme, allAvailableThemes: viewModel.themes))) {
+                        VStack(alignment: .leading) {
+                            Text(theme.name)
+                                .foregroundColor(viewModel.convertColor(color: theme.color))
+                                .font(.title)
+                            HStack {
+                                ForEach(Set(theme.emojis).sorted(), id: \.self) { emoji in
+                                    Text(emoji)
+                                        .font(.headline)
+                                }
                             }
                         }
                     }
@@ -22,14 +24,7 @@ struct ThemeView: View {
             }
             .listStyle(.plain)
             .navigationBarTitle(Text("Memorize"))
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 }
-
-
-
-//struct ThemeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ThemeView()
-//    }
-//}

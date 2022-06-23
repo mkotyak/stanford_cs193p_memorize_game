@@ -1,10 +1,3 @@
-//
-//  MemoryGameModal.swift
-//  Memorize
-//
-//  Created by Maria Kotyak on 16.06.2022.
-//
-
 import Foundation
 
 struct MemoryGameModel<CardContent> where CardContent: Equatable {
@@ -14,10 +7,10 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
         var content: CardContent
         var id: Int
     }
-
+    
     private(set) var cards: [Card]
     private var indexOfTheOneAndOnlyFaceUpCard: Int?
-
+    
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         cards = [Card]()
 //      add numberOfPairOfCards x 2 cards to cards array
@@ -26,8 +19,9 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: pairIndex*2))
             cards.append(Card(content: content, id: pairIndex*2 + 1))
         }
+        cards.shuffle()
     }
-
+    
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
            !cards[chosenIndex].isFaceUp,

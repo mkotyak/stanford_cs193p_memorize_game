@@ -1,15 +1,8 @@
-//
-//  ThemeSelectionViewModel.swift
-//  Memorize
-//
-//  Created by Maria Kotyak on 20.06.2022.
-//
-
 import Foundation
 import SwiftUI
 
 class ThemeSelectionViewModel: ObservableObject {
-    var themes: [ThemeModel] = []
+    @Published var themes: [ThemeModel] = []
 
     init() {
         themes.append(ThemeModel(
@@ -18,7 +11,7 @@ class ThemeSelectionViewModel: ObservableObject {
             emojis: ["💀", "👻", "🎃", "🕸", "🕷", "🦇", "💀"],
             color: "orange")
         )
-
+        
         themes.append(ThemeModel(
             name: "Food",
             numOfPairs: 6,
@@ -55,11 +48,11 @@ class ThemeSelectionViewModel: ObservableObject {
         )
     }
     
-    init(newTheme: ThemeModel) {
-        themes.append(newTheme)
-    }
+//    init(newTheme: ThemeModel) {
+//        themes.append(newTheme)
+//    }
     
-    static func convertColor(color: String) -> Color {
+    func convertColor(color: String) -> Color {
         switch color {
         case "orange":
             return .orange
