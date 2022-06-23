@@ -17,7 +17,7 @@ struct GameView: View {
         }
         .foregroundColor(.red)
         .padding(.horizontal)
-        .navigationTitle(viewModel.title)
+        .navigationTitle("\(viewModel.title) (score: \(viewModel.score))")
         .navigationBarTitleDisplayMode(.automatic)
         .navigationBarItems(
             trailing: Button(action: {

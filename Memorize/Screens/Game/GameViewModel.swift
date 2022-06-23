@@ -11,6 +11,9 @@ class GameViewModel: ObservableObject {
     var title: String {
         gameName
     }
+    var score: Int {
+        model.score
+    }
     
     init(theme: ThemeModel, allAvailableThemes: [ThemeModel]) {
         model = GameViewModel.createMemoryGame(theme: theme)

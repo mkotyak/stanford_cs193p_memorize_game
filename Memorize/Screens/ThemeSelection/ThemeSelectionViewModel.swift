@@ -48,10 +48,6 @@ class ThemeSelectionViewModel: ObservableObject {
         )
     }
     
-//    init(newTheme: ThemeModel) {
-//        themes.append(newTheme)
-//    }
-    
     func convertColor(color: String) -> Color {
         switch color {
         case "orange":

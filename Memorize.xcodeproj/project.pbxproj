@@ -10,6 +10,7 @@
 		FF3A4D5E2860F4710021D1D9 /* ThemeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D5D2860F4710021D1D9 /* ThemeSelectionViewModel.swift */; };
 		FF3A4D602860F7420021D1D9 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D5F2860F7420021D1D9 /* ThemeView.swift */; };
 		FF3A4D662860F95F0021D1D9 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D652860F95F0021D1D9 /* ThemeModel.swift */; };
+		FF9708BD286458BF00578E19 /* EditThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9708BC286458BE00578E19 /* EditThemeView.swift */; };
 		FFAA24A0283D3E02007B807C /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA249F283D3E02007B807C /* MemorizeApp.swift */; };
 		FFAA24A2283D3E02007B807C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA24A1283D3E02007B807C /* GameView.swift */; };
 		FFAA24A4283D3E04007B807C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAA24A3283D3E04007B807C /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		FF3A4D5D2860F4710021D1D9 /* ThemeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewModel.swift; sourceTree = "<group>"; };
 		FF3A4D5F2860F7420021D1D9 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		FF3A4D652860F95F0021D1D9 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		FF9708BC286458BE00578E19 /* EditThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditThemeView.swift; sourceTree = "<group>"; };
 		FFAA249C283D3E02007B807C /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAA249F283D3E02007B807C /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
 		FFAA24A1283D3E02007B807C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -66,17 +68,18 @@
 			isa = PBXGroup;
 			children = (
 				FF3A4D642860F87D0021D1D9 /* Game */,
-				FF3A4D632860F86C0021D1D9 /* NewTheme */,
+				FF3A4D632860F86C0021D1D9 /* EditTheme */,
 				FF3A4D5A2860F32D0021D1D9 /* ThemeSelection */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		FF3A4D632860F86C0021D1D9 /* NewTheme */ = {
+		FF3A4D632860F86C0021D1D9 /* EditTheme */ = {
 			isa = PBXGroup;
 			children = (
+				FF9708BC286458BE00578E19 /* EditThemeView.swift */,
 			);
-			path = NewTheme;
+			path = EditTheme;
 			sourceTree = "<group>";
 		};
 		FF3A4D642860F87D0021D1D9 /* Game */ = {
@@ -202,6 +205,7 @@
 				FFDA9725285B6CAC00B280FF /* MemoryGameModel.swift in Sources */,
 				FF3A4D5E2860F4710021D1D9 /* ThemeSelectionViewModel.swift in Sources */,
 				FFAA24A0283D3E02007B807C /* MemorizeApp.swift in Sources */,
+				FF9708BD286458BF00578E19 /* EditThemeView.swift in Sources */,
 				FFDA9727285B6F1200B280FF /* GameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

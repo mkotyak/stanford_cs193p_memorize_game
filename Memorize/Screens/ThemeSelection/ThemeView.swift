@@ -25,6 +25,24 @@ struct ThemeView: View {
             .listStyle(.plain)
             .navigationBarTitle(Text("Memorize"))
             .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarItems(
+                leading: Button(action: {
+                    viewModel.themes.append(ThemeModel(name: "New theme", numOfPairs: 6, emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"], color: "pink"))
+                }, label: {
+                    Image(systemName: "plus")
+                }),
+                trailing: Button(action: {
+                    debugPrint("Edit a theme")
+                }, label: {
+                    Text("Edit")
+                })
+            )
         }
+    }
+}
+
+struct ThemeView_Previews: PreviewProvider {
+    static var previews: some View {
+        ThemeView(viewModel: ThemeSelectionViewModel())
     }
 }
