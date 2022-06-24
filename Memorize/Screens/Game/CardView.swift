@@ -13,7 +13,9 @@ struct CardView: View {
             } else if card.isMatched {
                 shape.opacity(0)
             } else {
-                shape.fill()
+//                shape.fill()
+                // Extra credit #3 - use gradient as a theme color
+                shape.fill(LinearGradient(colors: [Color.blue, Color.white], startPoint: .topLeading, endPoint: .bottomTrailing))
             }
         }
     }

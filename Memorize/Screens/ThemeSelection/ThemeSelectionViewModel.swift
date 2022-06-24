@@ -3,7 +3,7 @@ import SwiftUI
 
 class ThemeSelectionViewModel: ObservableObject {
     @Published var themes: [ThemeModel] = []
-
+ 
     init() {
         themes.append(ThemeModel(
             name: "Halloween",
@@ -14,11 +14,10 @@ class ThemeSelectionViewModel: ObservableObject {
         
         themes.append(ThemeModel(
             name: "Food",
-            numOfPairs: 6,
             emojis: ["🍔", "🌭", "🌮", "🥙", "🥓", "🍕", "🍎", "🍇"],
             color: "green")
         )
-
+        
         themes.append(ThemeModel(
             name: "Vehicle",
             numOfPairs: 6,
@@ -28,7 +27,6 @@ class ThemeSelectionViewModel: ObservableObject {
         
         themes.append(ThemeModel(
             name: "Flags",
-            numOfPairs: 6,
             emojis: ["🇺🇦", "🏳️‍🌈", "🇪🇺", "🇺🇸", "🇰🇷", "🇵🇱", "🇷🇴", "🇵🇪"],
             color: "mint")
         )
@@ -42,9 +40,8 @@ class ThemeSelectionViewModel: ObservableObject {
         
         themes.append(ThemeModel(
             name: "Animals",
-            numOfPairs: 6,
             emojis: ["🐶", "🐱", "🐻‍❄️", "🦁", "🐷", "🦊", "🐻", "🐵"],
-            color: "purple")
+            color: "yellow")
         )
     }
     

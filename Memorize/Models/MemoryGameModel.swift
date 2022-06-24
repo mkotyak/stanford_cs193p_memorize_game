@@ -13,6 +13,9 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card]
     private var indexOfTheOneAndOnlyFaceUpCard: Int?
     var score = 0
+    var minTimeSpentForMatching: Double?
+    var startMatchingTime = Date()
+    var matchTime = Date()
     
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         cards = [Card]()
@@ -34,17 +37,29 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             debugPrint("Card is faceUp or isMatched")
             return
         }
-        
+        // >>>>I don't know where I should start to track matching time>>>>
+        startMatchingTime = .now
+        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
             debugPrint("only one card is fase up")
             if cards[chosenIndex].content == cards[potentialMatchIndex].content {
+                matchTime = .now
                 cards[chosenIndex].isMatched = true
                 cards[potentialMatchIndex].isMatched = true
                 score += 2
+                if let bestResult = minTimeSpentForMatching {
+                    let currentResult = matchTime.timeIntervalSince(startMatchingTime)
+                    if bestResult > currentResult {
+                        score += 10
+                    }
+                } else {
+                    minTimeSpentForMatching = matchTime.timeIntervalSince(startMatchingTime)
+                }
             } else if cards[chosenIndex].isSeen {
                 score -= 1
             }
             indexOfTheOneAndOnlyFaceUpCard = nil
+
         } else {
             debugPrint("NOT only one card is fase up")
             for index in cards.indices {

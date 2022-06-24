@@ -7,7 +7,7 @@ struct ThemeView: View {
         NavigationView {
             List(viewModel.themes) { theme in
                 ScrollView {
-                    NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme, allAvailableThemes: viewModel.themes))) {
+                    NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme, allAvailableThemes: viewModel.themes), color: viewModel.convertColor(color: theme.color))) {
                         VStack(alignment: .leading) {
                             Text(theme.name)
                                 .foregroundColor(viewModel.convertColor(color: theme.color))
