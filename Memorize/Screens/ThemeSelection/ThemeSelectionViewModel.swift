@@ -7,64 +7,44 @@ class ThemeSelectionViewModel: ObservableObject {
     init() {
         themes.append(ThemeModel(
             name: "Halloween",
-            numOfPairs: 6,
+            numOfPairs: .explicit(6),
             emojis: ["💀", "👻", "🎃", "🕸", "🕷", "🦇", "💀"],
             color: "orange")
         )
         
         themes.append(ThemeModel(
             name: "Food",
+            numOfPairs: .all,
             emojis: ["🍔", "🌭", "🌮", "🥙", "🥓", "🍕", "🍎", "🍇"],
             color: "green")
         )
         
         themes.append(ThemeModel(
             name: "Vehicle",
-            numOfPairs: 6,
+            numOfPairs: .explicit(6),
             emojis: ["🚗", "🚌", "🏎", "🚑", "🛴", "🚲", "✈️", "🚀"],
             color: "blue")
         )
         
         themes.append(ThemeModel(
             name: "Flags",
+            numOfPairs: .all,
             emojis: ["🇺🇦", "🏳️‍🌈", "🇪🇺", "🇺🇸", "🇰🇷", "🇵🇱", "🇷🇴", "🇵🇪"],
             color: "mint")
         )
         
         themes.append(ThemeModel(
             name: "Faces",
-            numOfPairs: 6,
+            numOfPairs: .explicit(6),
             emojis: ["😃", "😆", "🥹", "😍", "🤩", "😢", "🥳", "😡"],
             color: "yellow")
         )
         
         themes.append(ThemeModel(
             name: "Animals",
+            numOfPairs: .random,
             emojis: ["🐶", "🐱", "🐻‍❄️", "🦁", "🐷", "🦊", "🐻", "🐵"],
-            color: "yellow")
+            color: "pink")
         )
-    }
-    
-    func convertColor(color: String) -> Color {
-        switch color {
-        case "orange":
-            return .orange
-        case "green":
-            return .green
-        case "blue":
-            return .blue
-        case "mint":
-            return .mint
-        case "white":
-            return .white
-        case "yellow":
-            return .yellow
-        case "purple":
-            return .purple
-        case "pink":
-            return .pink
-        default:
-            return .black
-        }
     }
 }

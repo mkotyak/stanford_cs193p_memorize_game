@@ -2,15 +2,16 @@ import SwiftUI
 
 struct ThemeView: View {
     @ObservedObject var viewModel: ThemeSelectionViewModel
+    let colorAdapter: ColorAdapter
 
     var body: some View {
         NavigationView {
             List(viewModel.themes) { theme in
                 ScrollView {
-                    NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme, allAvailableThemes: viewModel.themes), color: viewModel.convertColor(color: theme.color))) {
+                    NavigationLink(destination: GameView(viewModel: GameViewModel(theme: theme, allAvailableThemes: viewModel.themes))) {
                         VStack(alignment: .leading) {
                             Text(theme.name)
-                                .foregroundColor(viewModel.convertColor(color: theme.color))
+                                .foregroundColor(colorAdapter.convertColor(color: theme.color))
                                 .font(.title)
                             HStack {
                                 ForEach(Set(theme.emojis).sorted(), id: \.self) { emoji in
@@ -27,7 +28,12 @@ struct ThemeView: View {
             .navigationBarTitleDisplayMode(.automatic)
             .navigationBarItems(
                 leading: Button(action: {
-                    viewModel.themes.append(ThemeModel(name: "New theme", numOfPairs: 6, emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"], color: "pink"))
+                    viewModel.themes.append(ThemeModel(
+                        name: "New theme",
+                        numOfPairs: .random,
+                        emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"],
+                        color: "pink"
+                    ))
                 }, label: {
                     Image(systemName: "plus")
                 }),
@@ -43,6 +49,9 @@ struct ThemeView: View {
 
 struct ThemeView_Previews: PreviewProvider {
     static var previews: some View {
-        ThemeView(viewModel: ThemeSelectionViewModel())
+        ThemeView(
+            viewModel: ThemeSelectionViewModel(),
+            colorAdapter: ColorAdapter()
+        )
     }
 }

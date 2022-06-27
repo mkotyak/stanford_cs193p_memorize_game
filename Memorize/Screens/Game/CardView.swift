@@ -13,10 +13,16 @@ struct CardView: View {
             } else if card.isMatched {
                 shape.opacity(0)
             } else {
-//                shape.fill()
                 // Extra credit #3 - use gradient as a theme color
-                shape.fill(LinearGradient(colors: [Color.blue, Color.white], startPoint: .topLeading, endPoint: .bottomTrailing))
+                shape.fill(
+                    LinearGradient(
+                        colors: [card.color, Color.white],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
             }
         }
+        .foregroundColor(card.color)
     }
 }

@@ -4,7 +4,10 @@ import SwiftUI
 struct MemorizeApp: App {
     var body: some Scene {
         WindowGroup {
-            ThemeView(viewModel: ThemeSelectionViewModel())
+            ThemeView(
+                viewModel: ThemeSelectionViewModel(),
+                colorAdapter: ColorAdapter()
+            )
         }
     }
 }

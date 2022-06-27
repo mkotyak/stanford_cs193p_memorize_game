@@ -2,7 +2,6 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
-    var color: Color
 
     var body: some View {
         ScrollView {
@@ -16,7 +15,6 @@ struct GameView: View {
                 }
             }
         }
-        .foregroundColor(color)
         .padding(.horizontal)
         .navigationTitle("\(viewModel.title) (score: \(viewModel.score))")
         .navigationBarTitleDisplayMode(.automatic)
