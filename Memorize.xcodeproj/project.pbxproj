@@ -15,6 +15,7 @@
 		FFAA24A2283D3E02007B807C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA24A1283D3E02007B807C /* GameView.swift */; };
 		FFAA24A4283D3E04007B807C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAA24A3283D3E04007B807C /* Assets.xcassets */; };
 		FFAA24A7283D3E04007B807C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAA24A6283D3E04007B807C /* Preview Assets.xcassets */; };
+		FFB75B52287DA57D005E2CD2 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB75B51287DA57D005E2CD2 /* AspectVGrid.swift */; };
 		FFB90CCC2860FAFB00912E3C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB90CCB2860FAFB00912E3C /* CardView.swift */; };
 		FFC7D5582869E83300D20B8F /* ColorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7D5572869E83300D20B8F /* ColorAdapter.swift */; };
 		FFDA9725285B6CAC00B280FF /* MemoryGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA9724285B6CAC00B280FF /* MemoryGameModel.swift */; };
@@ -31,6 +32,7 @@
 		FFAA24A1283D3E02007B807C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		FFAA24A3283D3E04007B807C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFAA24A6283D3E04007B807C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FFB75B51287DA57D005E2CD2 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		FFB90CCB2860FAFB00912E3C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		FFC7D5572869E83300D20B8F /* ColorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdapter.swift; sourceTree = "<group>"; };
 		FFDA9724285B6CAC00B280FF /* MemoryGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryGameModel.swift; path = Memorize/Models/MemoryGameModel.swift; sourceTree = SOURCE_ROOT; };
@@ -89,6 +91,7 @@
 			children = (
 				FFB90CCB2860FAFB00912E3C /* CardView.swift */,
 				FFAA24A1283D3E02007B807C /* GameView.swift */,
+				FFB75B51287DA57D005E2CD2 /* AspectVGrid.swift */,
 				FFDA9726285B6F1200B280FF /* GameViewModel.swift */,
 			);
 			path = Game;
@@ -213,6 +216,7 @@
 				FF3A4D662860F95F0021D1D9 /* ThemeModel.swift in Sources */,
 				FF3A4D602860F7420021D1D9 /* ThemeView.swift in Sources */,
 				FFAA24A2283D3E02007B807C /* GameView.swift in Sources */,
+				FFB75B52287DA57D005E2CD2 /* AspectVGrid.swift in Sources */,
 				FFDA9725285B6CAC00B280FF /* MemoryGameModel.swift in Sources */,
 				FF3A4D5E2860F4710021D1D9 /* ThemeSelectionViewModel.swift in Sources */,
 				FFAA24A0283D3E02007B807C /* MemorizeApp.swift in Sources */,

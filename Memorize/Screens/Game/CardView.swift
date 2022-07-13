@@ -12,8 +12,6 @@ struct CardView: View {
                     shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
                     Text(card.content)
                         .font(font(in: geometry.size))
-                } else if card.isMatched {
-                    shape.opacity(0)
                 } else {
                     shape.fill(
                         LinearGradient(
@@ -32,9 +30,9 @@ struct CardView: View {
         Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
     }
 
-    private enum DrawingConstants {
-        static let cornerRadius: CGFloat = 20
+    private struct DrawingConstants {
+        static let cornerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.75
     }
 }
