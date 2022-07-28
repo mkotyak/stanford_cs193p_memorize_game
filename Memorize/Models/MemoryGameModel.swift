@@ -23,7 +23,6 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
     init(numberOfPairsOfCards: Int, color: Color, createCardContent: (Int) -> CardContent) {
         cards = [Card]()
         startGameDate = .now
-        // Add numberOfPairOfCards x 2 cards to cards array
         for pairIndex in 0 ..< numberOfPairsOfCards {
             let content: CardContent = createCardContent(pairIndex)
             cards.append(Card(content: content, color: color))
@@ -34,15 +33,12 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
 
     mutating func choose(_ card: Card) {
         guard let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) else {
-            debugPrint("Card is out of scope")
             return
         }
         guard !cards[chosenIndex].isFaceUp, !cards[chosenIndex].isMatched else {
-            debugPrint("Card is faceUp or isMatched")
             return
         }
         if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
-            debugPrint("only one card is fase up")
             if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                 let matchDate = Date.now
                 cards[chosenIndex].isMatched = true
@@ -56,7 +52,6 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             }
             indexOfTheOneAndOnlyFaceUpCard = nil
         } else {
-            debugPrint("NOT only one card is fase up")
             for index in cards.indices {
                 if cards[index].isFaceUp {
                     cards[index].isFaceUp = false

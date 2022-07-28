@@ -33,31 +33,30 @@ struct ThemeView: View {
             .navigationBarTitle(Text("Memorize"))
             .navigationBarTitleDisplayMode(.automatic)
             .navigationBarItems(
-                leading: Button(action: {
-                    viewModel.themes.append(ThemeModel(
-                        name: "New theme",
-                        numOfPairs: .random,
-                        emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"],
-                        color: "pink"
-                    ))
-                }, label: {
-                    Image(systemName: "plus")
-                }),
-                trailing: Button(action: {
-                    debugPrint("Edit a theme")
-                }, label: {
-                    Text("Edit")
-                })
+                leading: newThemeButton,
+                trailing: editThemeButton
             )
         }
     }
-}
 
-struct ThemeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeView(
-            viewModel: ThemeSelectionViewModel(),
-            colorAdapter: ColorAdapter()
-        )
+    private var newThemeButton: some View {
+        Button(action: {
+            viewModel.themes.append(ThemeModel(
+                name: "New theme",
+                numOfPairs: .random,
+                emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"],
+                color: "pink"
+            ))
+        }, label: {
+            Image(systemName: "plus")
+        })
+    }
+
+    private var editThemeButton: some View {
+        Button(action: {
+            debugPrint("Edit a theme")
+        }, label: {
+            Text("Edit")
+        })
     }
 }
