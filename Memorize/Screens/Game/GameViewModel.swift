@@ -2,10 +2,12 @@ import Foundation
 import SwiftUI
 
 class GameViewModel: ObservableObject {
+    typealias Card = MemoryGameModel<String>.Card
+    
     @Published private var model: MemoryGameModel<String>
     let themes: [ThemeModel]
     var gameName: String
-    var cards: [MemoryGameModel<String>.Card] {
+    var cards: [Card] {
         model.cards
     }
 
@@ -23,7 +25,7 @@ class GameViewModel: ObservableObject {
         gameName = theme.name
     }
 
-    static func createMemoryGame(theme: ThemeModel) -> MemoryGameModel<String> {
+     private static func createMemoryGame(theme: ThemeModel) -> MemoryGameModel<String> {
         let shuffledEmojis = Set(theme.emojis).shuffled()
         let validatedNumOfPairs: Int
 
@@ -46,7 +48,7 @@ class GameViewModel: ObservableObject {
 
     // MARK: - Intent(s)
 
-    func choose(_ card: MemoryGameModel<String>.Card) {
+    func choose(_ card: Card) {
         model.choose(card)
     }
 

@@ -1,14 +1,13 @@
 import Foundation
 import SwiftUI
-import UIKit
 
 struct MemoryGameModel<CardContent> where CardContent: Equatable {
     struct Card: Identifiable {
-        var id = UUID()
-        var isFaceUp: Bool = false
-        var isMatched: Bool = false
+        let id = UUID()
+        var isFaceUp = false
+        var isMatched = false
         var isSeen = false
-        var content: CardContent
+        let content: CardContent
         var color: Color
     }
 
@@ -69,7 +68,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             }
             indexOfTheOneAndOnlyFaceUpCard = chosenIndex
         }
-        cards[chosenIndex].isFaceUp.toggle()
+        cards[chosenIndex].isFaceUp = true
     }
 
     mutating func extraBonus(for matchTimeInterval: TimeInterval) -> Int {

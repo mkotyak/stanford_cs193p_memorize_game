@@ -1,28 +1,42 @@
 import SwiftUI
 
 struct CardView: View {
-    let card: MemoryGameModel<String>.Card
+    let card: GameViewModel.Card
 
     var body: some View {
-        ZStack {
-            let shape = RoundedRectangle(cornerRadius: 20)
-            if card.isFaceUp {
-                shape.fill().foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3)
-                Text(card.content).font(.largeTitle)
-            } else if card.isMatched {
-                shape.opacity(0)
-            } else {
-                // Extra credit #3 - use gradient as a theme color
-                shape.fill(
-                    LinearGradient(
-                        colors: [card.color, Color.white],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
+        GeometryReader { geometry in
+            ZStack {
+                let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+                if card.isFaceUp {
+                    shape.fill().foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                    PieShape(
+                        startAngle: Angle(degrees: 0-90),
+                        endAngle: Angle(degrees: 110-90)
+                    ).padding(5).opacity(0.5)
+                    Text(card.content)
+                        .font(font(in: geometry.size))
+                } else {
+                    shape.fill(
+                        LinearGradient(
+                            colors: [card.color, Color.white],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
-                )
+                }
             }
         }
         .foregroundColor(card.color)
+    }
+
+    private func font(in size: CGSize) -> Font {
+        Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
+    }
+
+    private struct DrawingConstants {
+        static let cornerRadius: CGFloat = 10
+        static let lineWidth: CGFloat = 3
+        static let fontScale: CGFloat = 0.7
     }
 }
