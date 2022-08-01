@@ -30,8 +30,8 @@
             filePath = "Memorize/Screens/Game/CardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "font(in:)"
             landmarkType = "7">
          </BreakpointContent>

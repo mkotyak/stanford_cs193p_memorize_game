@@ -19,6 +19,10 @@ struct CardView: View {
                 .padding(Constants.pieShapePadding)
                 .opacity(Constants.pieShapeOpacity)
                 Text(card.content)
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                    .animation(
+                        Animation.linear(duration: 1).repeatForever(autoreverses: false),
+                        value: card.isMatched)
                     .font(font(in: geometry.size))
             }
         }

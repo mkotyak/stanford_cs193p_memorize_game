@@ -15,7 +15,7 @@ struct Cardify: ViewModifier {
             if isFaceUp {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: Constants.lineWidth)
-                content
+//                content
             } else {
                 shape.fill(
                     LinearGradient(
@@ -25,6 +25,7 @@ struct Cardify: ViewModifier {
                     )
                 )
             }
+            content.opacity(isFaceUp ? 1 : 0)
         }
         .foregroundColor(cardColor)
     }
