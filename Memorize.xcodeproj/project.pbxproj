@@ -21,6 +21,7 @@
 		FFC7D5582869E83300D20B8F /* ColorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7D5572869E83300D20B8F /* ColorAdapter.swift */; };
 		FFDA9725285B6CAC00B280FF /* MemoryGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA9724285B6CAC00B280FF /* MemoryGameModel.swift */; };
 		FFDA9727285B6F1200B280FF /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA9726285B6F1200B280FF /* GameViewModel.swift */; };
+		FFF6C6B22897C2310022C3FD /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF6C6B12897C2310022C3FD /* Cardify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		FFC7D5572869E83300D20B8F /* ColorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdapter.swift; sourceTree = "<group>"; };
 		FFDA9724285B6CAC00B280FF /* MemoryGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryGameModel.swift; path = Memorize/Models/MemoryGameModel.swift; sourceTree = SOURCE_ROOT; };
 		FFDA9726285B6F1200B280FF /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		FFF6C6B12897C2310022C3FD /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				FFC7D5572869E83300D20B8F /* ColorAdapter.swift */,
 				FF6542E22892B2400023D199 /* PieShape.swift */,
+				FFF6C6B12897C2310022C3FD /* Cardify.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				FFAA24A2283D3E02007B807C /* GameView.swift in Sources */,
 				FF6542E32892B2400023D199 /* PieShape.swift in Sources */,
 				FFB75B52287DA57D005E2CD2 /* AspectVGrid.swift in Sources */,
+				FFF6C6B22897C2310022C3FD /* Cardify.swift in Sources */,
 				FFDA9725285B6CAC00B280FF /* MemoryGameModel.swift in Sources */,
 				FF3A4D5E2860F4710021D1D9 /* ThemeSelectionViewModel.swift in Sources */,
 				FFAA24A0283D3E02007B807C /* MemorizeApp.swift in Sources */,
