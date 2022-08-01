@@ -22,7 +22,7 @@ struct CardView: View {
                     .font(font(in: geometry.size))
             }
         }
-        .modifier(Cardify(isFaceUp: card.isFaceUp, cardColor: card.color))
+        .cardify(isFaceUp: card.isFaceUp, cardColor: card.color)
     }
 
     private func font(in size: CGSize) -> Font {

@@ -29,3 +29,9 @@ struct Cardify: ViewModifier {
         .foregroundColor(cardColor)
     }
 }
+
+extension View {
+    func cardify(isFaceUp: Bool, cardColor: Color) -> some View {
+        return self.modifier(Cardify(isFaceUp: isFaceUp, cardColor: cardColor))
+    }
+}
