@@ -59,4 +59,8 @@ class GameViewModel: ObservableObject {
         model = GameViewModel.createMemoryGame(theme: newTheme)
         gameName = newTheme.name
     }
+    
+    func shuffle() {
+        model.shuffle()
+    }
 }
