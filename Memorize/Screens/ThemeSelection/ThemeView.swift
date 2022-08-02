@@ -13,8 +13,7 @@ struct ThemeView: View {
                             theme: theme,
                             allAvailableThemes: viewModel.themes
                         )
-                    )
-                    ) {
+                    )) {
                         VStack(alignment: .leading) {
                             Text(theme.name)
                                 .foregroundColor(colorAdapter.convertColor(color: theme.color))
