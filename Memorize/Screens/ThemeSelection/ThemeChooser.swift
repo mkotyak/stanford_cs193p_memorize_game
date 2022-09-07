@@ -23,9 +23,13 @@ struct ThemeChooser: View {
                                 .foregroundColor(colorAdapter.convertColor(color: theme.color))
                                 .font(.title)
                             HStack {
-                                ForEach(Set(theme.emojis).sorted(), id: \.self) { emoji in
+                                let emojis = theme.emojis.prefix(min(8, theme.emojis.count))
+                                ForEach(Set(emojis).sorted(), id: \.self) { emoji in
                                     Text(emoji)
                                         .font(.headline)
+                                }
+                                if emojis.count < theme.emojis.count {
+                                    Text("...")
                                 }
                             }
                         }
@@ -40,7 +44,7 @@ struct ThemeChooser: View {
                 }
             }
             .popover(item: $themeToEdit) { theme in
-                if let index = viewModel.themes.firstIndex(where: {$0.id == theme.id}) {
+                if let index = viewModel.themes.firstIndex(where: { $0.id == theme.id }) {
                     ThemeEditor(theme: $viewModel.themes[index])
                 }
             }

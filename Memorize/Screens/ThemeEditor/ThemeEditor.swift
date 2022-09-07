@@ -58,7 +58,7 @@ struct ThemeEditor: View {
             return
         }
 
-        theme.emojis.append(String(emoji))
+        theme.emojis.insert(String(emoji), at: 0)
     }
 
     private func remove(_ emoji: String) {
