@@ -20,6 +20,8 @@ class ColorAdapter {
             return .purple
         case "pink":
             return .pink
+        case "red":
+            return .red
         default:
             return .black
         }

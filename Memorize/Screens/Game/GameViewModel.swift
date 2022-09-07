@@ -34,8 +34,10 @@ class GameViewModel: ObservableObject {
             validatedNumOfPairs = shuffledEmojis.count
         case .explicit(let numOfPairs):
             validatedNumOfPairs = min(numOfPairs, shuffledEmojis.count)
-//        case .random:
-//            validatedNumOfPairs = Int.random(in: 4 ..< shuffledEmojis.count)
+        case .random:
+            validatedNumOfPairs = Int.random(in: 4 ..< shuffledEmojis.count)
+        case .none:
+            validatedNumOfPairs = 0
         }
 
         return MemoryGameModel(

@@ -2,10 +2,8 @@ import Foundation
 import SwiftUI
 
 class ThemeChooserViewModel: ObservableObject {
-    
     @Published var themes = [ThemeModel]() {
         didSet {
-            debugPrint("themese have been updated")
             storeInUserDefaults()
         }
     }
@@ -18,8 +16,6 @@ class ThemeChooserViewModel: ObservableObject {
         restoreFromUserDefaults()
         
         if themes.isEmpty {
-            debugPrint("using built-in themes")
-            
             themes.append(ThemeModel(
                 name: "Halloween",
                 numOfPairs: .explicit(6),
@@ -59,11 +55,9 @@ class ThemeChooserViewModel: ObservableObject {
                 name: "Animals",
                 numOfPairs: .explicit(6),
                 emojis: ["🐶", "🐱", "🐻‍❄️", "🦁", "🐷", "🦊", "🐻", "🐵"],
-                color: "pink")
+                color: "red")
             )
         }
-        
-        debugPrint("Successfully loaded themes from userDefaults")
     }
     
     private func storeInUserDefaults() {
