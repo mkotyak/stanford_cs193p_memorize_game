@@ -1,9 +1,9 @@
 import Foundation
 
-struct ThemeModel: Identifiable {
-    enum NumOfPairs {
+struct ThemeModel: Identifiable, Codable {
+    enum NumOfPairs: Codable {
         case all
-        case random
+//        case random
         case explicit(Int)
     }
     
