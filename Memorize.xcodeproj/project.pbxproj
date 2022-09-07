@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF3A4D5E2860F4710021D1D9 /* ThemeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D5D2860F4710021D1D9 /* ThemeSelectionViewModel.swift */; };
-		FF3A4D602860F7420021D1D9 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D5F2860F7420021D1D9 /* ThemeView.swift */; };
+		FF3A4D5E2860F4710021D1D9 /* ThemeChooserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D5D2860F4710021D1D9 /* ThemeChooserViewModel.swift */; };
+		FF3A4D602860F7420021D1D9 /* ThemeChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D5F2860F7420021D1D9 /* ThemeChooser.swift */; };
 		FF3A4D662860F95F0021D1D9 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A4D652860F95F0021D1D9 /* ThemeModel.swift */; };
 		FF6542E32892B2400023D199 /* PieShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6542E22892B2400023D199 /* PieShape.swift */; };
 		FF9708BD286458BF00578E19 /* EditThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9708BC286458BE00578E19 /* EditThemeView.swift */; };
@@ -25,8 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF3A4D5D2860F4710021D1D9 /* ThemeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewModel.swift; sourceTree = "<group>"; };
-		FF3A4D5F2860F7420021D1D9 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		FF3A4D5D2860F4710021D1D9 /* ThemeChooserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserViewModel.swift; sourceTree = "<group>"; };
+		FF3A4D5F2860F7420021D1D9 /* ThemeChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooser.swift; sourceTree = "<group>"; };
 		FF3A4D652860F95F0021D1D9 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		FF6542E22892B2400023D199 /* PieShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieShape.swift; sourceTree = "<group>"; };
 		FF9708BC286458BE00578E19 /* EditThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditThemeView.swift; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 		FF3A4D5A2860F32D0021D1D9 /* ThemeSelection */ = {
 			isa = PBXGroup;
 			children = (
-				FF3A4D5F2860F7420021D1D9 /* ThemeView.swift */,
-				FF3A4D5D2860F4710021D1D9 /* ThemeSelectionViewModel.swift */,
+				FF3A4D5F2860F7420021D1D9 /* ThemeChooser.swift */,
+				FF3A4D5D2860F4710021D1D9 /* ThemeChooserViewModel.swift */,
 			);
 			path = ThemeSelection;
 			sourceTree = "<group>";
@@ -220,13 +220,13 @@
 			files = (
 				FFB90CCC2860FAFB00912E3C /* CardView.swift in Sources */,
 				FF3A4D662860F95F0021D1D9 /* ThemeModel.swift in Sources */,
-				FF3A4D602860F7420021D1D9 /* ThemeView.swift in Sources */,
+				FF3A4D602860F7420021D1D9 /* ThemeChooser.swift in Sources */,
 				FFAA24A2283D3E02007B807C /* GameView.swift in Sources */,
 				FF6542E32892B2400023D199 /* PieShape.swift in Sources */,
 				FFB75B52287DA57D005E2CD2 /* AspectVGrid.swift in Sources */,
 				FFF6C6B22897C2310022C3FD /* Cardify.swift in Sources */,
 				FFDA9725285B6CAC00B280FF /* MemoryGameModel.swift in Sources */,
-				FF3A4D5E2860F4710021D1D9 /* ThemeSelectionViewModel.swift in Sources */,
+				FF3A4D5E2860F4710021D1D9 /* ThemeChooserViewModel.swift in Sources */,
 				FFAA24A0283D3E02007B807C /* MemorizeApp.swift in Sources */,
 				FF9708BD286458BF00578E19 /* EditThemeView.swift in Sources */,
 				FFDA9727285B6F1200B280FF /* GameViewModel.swift in Sources */,

@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct ThemeView: View {
-    @ObservedObject var viewModel: ThemeSelectionViewModel
+struct ThemeChooser: View {
+    @ObservedObject var viewModel: ThemeChooserViewModel
     let colorAdapter: ColorAdapter
 
     var body: some View {
@@ -30,7 +30,7 @@ struct ThemeView: View {
             }
             .listStyle(.plain)
             .navigationBarTitle(Text("Memorize"))
-            .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: newThemeButton,
                 trailing: editThemeButton
@@ -42,7 +42,7 @@ struct ThemeView: View {
         Button(action: {
             viewModel.themes.append(ThemeModel(
                 name: "New theme",
-                numOfPairs: .random,
+                numOfPairs: .explicit(6),
                 emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"],
                 color: "pink"
             ))
