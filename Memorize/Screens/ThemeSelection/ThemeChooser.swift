@@ -2,12 +2,13 @@ import SwiftUI
 
 struct ThemeChooser: View {
     @ObservedObject var viewModel: ThemeChooserViewModel
+    @State private var editMode: EditMode = .inactive
     let colorAdapter: ColorAdapter
 
     var body: some View {
         NavigationView {
-            List(viewModel.themes) { theme in
-                ScrollView {
+            List {
+                ForEach(viewModel.themes) { theme in
                     NavigationLink(destination: GameView(
                         viewModel: GameViewModel(
                             theme: theme,
@@ -27,35 +28,39 @@ struct ThemeChooser: View {
                         }
                     }
                 }
+                .onDelete { index in
+                    viewModel.themes.remove(atOffsets: index)
+                }
+                .onMove { index, newOffset in
+                    viewModel.themes.move(fromOffsets: index, toOffset: newOffset)
+                }
             }
             .listStyle(.plain)
             .navigationBarTitle(Text("Memorize"))
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(
-                leading: newThemeButton,
-                trailing: editThemeButton
-            )
+            .toolbar {
+                ToolbarItem {
+                    EditButton()
+                }
+
+                ToolbarItem(placement: .navigationBarLeading) {
+                    newThemeButton
+                }
+            }
+            .environment(\.editMode, $editMode)
         }
     }
 
     private var newThemeButton: some View {
         Button(action: {
             viewModel.themes.append(ThemeModel(
-                name: "New theme",
-                numOfPairs: .explicit(6),
-                emojis: ["🎄", "🍄", "🦙", "🦔", "🍃", "🌴"],
-                color: "pink"
+                name: "New",
+                numOfPairs: .none,
+                emojis: [],
+                color: "black"
             ))
         }, label: {
             Image(systemName: "plus")
-        })
-    }
-
-    private var editThemeButton: some View {
-        Button(action: {
-            debugPrint("Edit a theme")
-        }, label: {
-            Text("Edit")
         })
     }
 }
