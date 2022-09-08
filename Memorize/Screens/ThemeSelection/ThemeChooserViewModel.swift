@@ -60,6 +60,10 @@ class ThemeChooserViewModel: ObservableObject {
         }
     }
     
+    func subtitle(for theme: ThemeModel) -> String {
+        Set(theme.emojis).sorted().joined()
+    }
+    
     private func storeInUserDefaults() {
         UserDefaults.standard.set(try? JSONEncoder().encode(themes), forKey: userDefaultsKey)
         debugPrint("changes have been saved to the userDefaults")

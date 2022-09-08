@@ -3,6 +3,9 @@ import SwiftUI
 struct ThemeChooser: View {
     @ObservedObject var viewModel: ThemeChooserViewModel
     @State private var editMode: EditMode = .inactive
+    @State private var isManaging = false
+    @State private var themeToEdit: ThemeModel?
+
     let colorAdapter: ColorAdapter
 
     var body: some View {
@@ -19,13 +22,10 @@ struct ThemeChooser: View {
                             Text(theme.name)
                                 .foregroundColor(colorAdapter.convertColor(color: theme.color))
                                 .font(.title)
-                            HStack {
-                                ForEach(Set(theme.emojis).sorted(), id: \.self) { emoji in
-                                    Text(emoji)
-                                        .font(.headline)
-                                }
-                            }
+                            Text(viewModel.subtitle(for: theme))
+                                .lineLimit(1)
                         }
+                        .gesture(editMode == .active ? tap(on: theme) : nil)
                     }
                 }
                 .onDelete { index in
@@ -33,6 +33,11 @@ struct ThemeChooser: View {
                 }
                 .onMove { index, newOffset in
                     viewModel.themes.move(fromOffsets: index, toOffset: newOffset)
+                }
+            }
+            .popover(item: $themeToEdit) { theme in
+                if let index = viewModel.themes.firstIndex(where: { $0.id == theme.id }) {
+                    ThemeEditor(theme: $viewModel.themes[index])
                 }
             }
             .listStyle(.plain)
@@ -62,5 +67,13 @@ struct ThemeChooser: View {
         }, label: {
             Image(systemName: "plus")
         })
+    }
+
+    private func tap(on theme: ThemeModel) -> some Gesture {
+        TapGesture()
+            .onEnded { _ in
+                isManaging = true
+                themeToEdit = theme
+            }
     }
 }
