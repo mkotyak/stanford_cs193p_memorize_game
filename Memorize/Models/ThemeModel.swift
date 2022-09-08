@@ -1,11 +1,10 @@
 import Foundation
 
 struct ThemeModel: Identifiable, Codable {
-    enum NumOfPairs: Codable {
+    enum NumOfPairs: Codable, Hashable {
         case all
         case random
         case explicit(Int)
-        case none 
     }
     
     var id = UUID()
