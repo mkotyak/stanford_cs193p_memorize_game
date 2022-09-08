@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ThemeEditor: View {
+struct ThemeEditorView: View {
     @Binding var theme: ThemeModel
     @State private var emojisToAdd = ""
 
@@ -9,8 +9,8 @@ struct ThemeEditor: View {
             nameSection
             addEmojiSection
             removeEmojiSection
-//            cardCountSection
-//            colorSection
+            cardCountSection
+            colorSection
         }
     }
 
@@ -43,9 +43,19 @@ struct ThemeEditor: View {
         }
     }
 
-//    var cardCountSection: some View {}
-//
-//    var colorSection: some View {}
+    var cardCountSection: some View {
+        Section(header: Text("Card count")) {
+            HStack {
+                Text("Num of pairs")
+                Stepper("") {} onDecrement: {}
+            }
+        }
+    }
+
+    var colorSection: some View {
+        Section(header: Text("Color")) {
+        }
+    }
 
     private func add(_ emoji: Character?) {
         guard let emoji = emoji else {
@@ -70,6 +80,6 @@ struct ThemeEditor: View {
 
 struct ThemeEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ThemeEditor(theme: .constant(ThemeChooserViewModel().themes[0]))
+        ThemeEditorView(theme: .constant(ThemeChooserViewModel().themes[0]))
     }
 }

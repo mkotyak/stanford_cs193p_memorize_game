@@ -37,7 +37,7 @@ struct ThemeChooser: View {
             }
             .popover(item: $themeToEdit) { theme in
                 if let index = viewModel.themes.firstIndex(where: { $0.id == theme.id }) {
-                    ThemeEditor(theme: $viewModel.themes[index])
+                    ThemeEditorView(theme: $viewModel.themes[index])
                 }
             }
             .listStyle(.plain)
@@ -60,7 +60,7 @@ struct ThemeChooser: View {
         Button(action: {
             viewModel.themes.append(ThemeModel(
                 name: "New",
-                numOfPairs: .none,
+                numOfPairs: .all,
                 emojis: [],
                 color: "black"
             ))
