@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ThemeEditorView: View {
-    @Binding var theme: ThemeModel
+    var theme: ThemeEditorViewModel
     @State private var emojisToAdd = ""
 
     var body: some View {
@@ -16,7 +16,7 @@ struct ThemeEditorView: View {
 
     var nameSection: some View {
         Section(header: Text("Name")) {
-            TextField("Name", text: $theme.name)
+            TextField("Name", text: theme.$theme.name)
         }
     }
 
@@ -24,7 +24,7 @@ struct ThemeEditorView: View {
         Section(header: Text("Add emojis")) {
             TextField("", text: $emojisToAdd)
                 .onChange(of: emojisToAdd) { newEmoji in
-                    add(newEmoji.last ?? nil)
+                    theme.add(newEmoji.last ?? nil)
                 }
         }
     }
@@ -35,7 +35,7 @@ struct ThemeEditorView: View {
                 ForEach(theme.emojis, id: \.self) { emoji in
                     Text(emoji)
                         .onTapGesture {
-                            remove(emoji)
+                            theme.remove(emoji)
                         }
                 }
             }
@@ -55,31 +55,5 @@ struct ThemeEditorView: View {
     var colorSection: some View {
         Section(header: Text("Color")) {
         }
-    }
-
-    private func add(_ emoji: Character?) {
-        guard let emoji = emoji else {
-            return
-        }
-
-        guard emoji.isEmoji,
-              !theme.emojis.contains(String(emoji))
-        else {
-            return
-        }
-
-        theme.emojis.insert(String(emoji), at: 0)
-    }
-
-    private func remove(_ emoji: String) {
-        if let index = theme.emojis.firstIndex(where: { $0.hashValue == emoji.hashValue }) {
-            theme.emojis.remove(at: index)
-        }
-    }
-}
-
-struct ThemeEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeEditorView(theme: .constant(ThemeChooserViewModel().themes[0]))
     }
 }

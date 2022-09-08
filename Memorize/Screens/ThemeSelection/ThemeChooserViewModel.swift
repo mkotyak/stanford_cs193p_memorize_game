@@ -11,7 +11,7 @@ class ThemeChooserViewModel: ObservableObject {
     private var userDefaultsKey: String {
         "ThemeChooserKey"
     }
- 
+    
     init() {
         restoreFromUserDefaults()
         
