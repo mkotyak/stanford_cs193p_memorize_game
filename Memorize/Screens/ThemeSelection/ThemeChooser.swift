@@ -3,7 +3,7 @@ import SwiftUI
 struct ThemeChooser: View {
     @ObservedObject var viewModel: ThemeChooserViewModel
     @State private var editMode: EditMode = .inactive
-    @State private var managing = false
+    @State private var isManaging = false
     @State private var themeToEdit: ThemeModel?
 
     let colorAdapter: ColorAdapter
@@ -22,16 +22,8 @@ struct ThemeChooser: View {
                             Text(theme.name)
                                 .foregroundColor(colorAdapter.convertColor(color: theme.color))
                                 .font(.title)
-                            HStack {
-                                let emojis = theme.emojis.prefix(min(8, theme.emojis.count))
-                                ForEach(Set(emojis).sorted(), id: \.self) { emoji in
-                                    Text(emoji)
-                                        .font(.headline)
-                                }
-                                if emojis.count < theme.emojis.count {
-                                    Text("...")
-                                }
-                            }
+                            Text(viewModel.subtitle(for: theme))
+                                .lineLimit(1)
                         }
                         .gesture(editMode == .active ? tap(on: theme) : nil)
                     }
@@ -80,7 +72,7 @@ struct ThemeChooser: View {
     private func tap(on theme: ThemeModel) -> some Gesture {
         TapGesture()
             .onEnded { _ in
-                managing = true
+                isManaging = true
                 themeToEdit = theme
             }
     }
