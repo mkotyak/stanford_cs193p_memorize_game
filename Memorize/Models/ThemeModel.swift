@@ -1,6 +1,7 @@
 import Foundation
 
 struct ThemeModel: Identifiable, Codable {
+    
     enum NumOfPairs: Codable, Hashable {
         case all
         case random

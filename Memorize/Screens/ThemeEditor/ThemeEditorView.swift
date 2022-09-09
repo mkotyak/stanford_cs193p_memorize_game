@@ -3,6 +3,22 @@ import SwiftUI
 struct ThemeEditorView: View {
     var theme: ThemeEditorViewModel
     @State private var emojisToAdd = ""
+    @State var pairs: String
+
+    init(theme: ThemeEditorViewModel, pairs: ThemeModel.NumOfPairs) {
+        var num: String {
+            if pairs == .all {
+                return "All"
+            } else if pairs == .random {
+                return "Random"
+            } else {
+                return "Explicit"
+            }
+        }
+
+        self.theme = theme
+        self.pairs = num
+    }
 
     var body: some View {
         Form {
@@ -45,15 +61,40 @@ struct ThemeEditorView: View {
 
     var cardCountSection: some View {
         Section(header: Text("Card count")) {
-            HStack {
-                Text("Num of pairs")
-                Stepper("") {} onDecrement: {}
+            VStack {
+                HStack {
+                    Picker(selection: $pairs) {
+                        let numberCases = ["All", "Random", "Explicit"]
+                        ForEach(numberCases, id: \.self) { numCase in
+                            Text("\(numCase)")
+                        }
+                    } label: {
+                        Text("")
+                    }
+                    .pickerStyle(.segmented)
+                    .onChange(of: pairs) { newValue in
+                        theme.updatePairs(newValue)
+                    }
+                }
+
+                if pairs == "Explicit" {
+                    var count = theme.pairsCount()
+
+                    Stepper("\(count) pairs") {
+                        count += 1
+                        theme.incrementPairsCount(count)
+                    } onDecrement: {
+                        if count != 0 {
+                            count -= 1
+                            theme.decrementPairsCount(count)
+                        }
+                    }
+                }
             }
         }
     }
 
     var colorSection: some View {
-        Section(header: Text("Color")) {
-        }
+        Section(header: Text("Color")) {}
     }
 }
