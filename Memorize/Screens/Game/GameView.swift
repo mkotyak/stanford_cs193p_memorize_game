@@ -10,7 +10,7 @@ struct GameView: View {
         static let undealtWidth = undealHeight * cardsAspectRatio
     }
 
-    @ObservedObject var viewModel: GameViewModel
+    @StateObject var viewModel: GameViewModel
 //    @State private var dealt = Set<UUID>()
 //    @Namespace private var dealingNamespace
 

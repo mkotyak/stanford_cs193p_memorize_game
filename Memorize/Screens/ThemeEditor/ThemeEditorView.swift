@@ -6,7 +6,7 @@ struct ThemeEditorView: View {
     @State var pairsValue: String
 
     init(theme: ThemeEditorViewModel, pairsValue: ThemeModel.NumOfPairs) {
-        var case: String {
+        var value: String {
             if pairsValue == .all {
                 return "All"
             } else if pairsValue == .random {
@@ -17,7 +17,7 @@ struct ThemeEditorView: View {
         }
 
         self.viewModel = theme
-        self.pairsValue = case
+        self.pairsValue = value
     }
 
     var body: some View {
