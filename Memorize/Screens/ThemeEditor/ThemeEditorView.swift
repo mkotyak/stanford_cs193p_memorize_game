@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct ThemeEditorView: View {
-    var theme: ThemeEditorViewModel
+    var viewModel: ThemeEditorViewModel
     @State private var emojisToAdd = ""
     @State var pairsValue: String
 
     init(theme: ThemeEditorViewModel, pairsValue: ThemeModel.NumOfPairs) {
-        var num: String {
+        var case: String {
             if pairsValue == .all {
                 return "All"
             } else if pairsValue == .random {
@@ -16,8 +16,8 @@ struct ThemeEditorView: View {
             }
         }
 
-        self.theme = theme
-        self.pairsValue = num
+        self.viewModel = theme
+        self.pairsValue = case
     }
 
     var body: some View {
@@ -32,7 +32,7 @@ struct ThemeEditorView: View {
 
     var nameSection: some View {
         Section(header: Text("Name")) {
-            TextField("Name", text: theme.$theme.name)
+            TextField("Name", text: viewModel.$theme.name)
         }
     }
 
@@ -40,7 +40,7 @@ struct ThemeEditorView: View {
         Section(header: Text("Add emojis")) {
             TextField("", text: $emojisToAdd)
                 .onChange(of: emojisToAdd) { newEmoji in
-                    theme.add(newEmoji.last ?? nil)
+                    viewModel.add(newEmoji.last ?? nil)
                 }
         }
     }
@@ -48,10 +48,10 @@ struct ThemeEditorView: View {
     var removeEmojiSection: some View {
         Section(header: Text("Remove emojis")) {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
-                ForEach(theme.emojis, id: \.self) { emoji in
+                ForEach(viewModel.emojis, id: \.self) { emoji in
                     Text(emoji)
                         .onTapGesture {
-                            theme.remove(emoji)
+                            viewModel.remove(emoji)
                         }
                 }
             }
@@ -73,20 +73,20 @@ struct ThemeEditorView: View {
                     }
                     .pickerStyle(.segmented)
                     .onChange(of: pairsValue) { newValue in
-                        theme.updatePairs(newValue)
+                        viewModel.updatePairs(newValue)
                     }
                 }
 
                 if pairsValue == "Explicit" {
-                    var count = theme.pairsCount()
+                    var count = viewModel.pairsCount()
 
                     Stepper("\(count) pairs") {
                         count += 1
-                        theme.incrementPairsCount(count)
+                        viewModel.incrementPairsCount(count)
                     } onDecrement: {
                         if count != 0 {
                             count -= 1
-                            theme.decrementPairsCount(count)
+                            viewModel.decrementPairsCount(count)
                         }
                     }
                 }
