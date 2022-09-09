@@ -37,7 +37,7 @@ struct ThemeChooser: View {
             }
             .popover(item: $themeToEdit) { theme in
                 if let index = viewModel.themes.firstIndex(where: { $0.id == theme.id }) {
-                    ThemeEditorView(theme: ThemeEditorViewModel(theme: $viewModel.themes[index]))
+                    ThemeEditorView(theme: ThemeEditorViewModel(theme: $viewModel.themes[index]), pairsValue: viewModel.themes[index].numOfPairs)
                 }
             }
             .listStyle(.plain)

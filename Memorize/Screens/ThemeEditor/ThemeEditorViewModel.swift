@@ -36,4 +36,37 @@ class ThemeEditorViewModel: ObservableObject {
             theme.emojis.remove(at: index)
         }
     }
+
+    func pairsCount() -> Int {
+        var count = 0
+
+        switch theme.numOfPairs {
+        case .explicit(let num):
+            count = num
+        case .all, .random:
+            break
+        }
+        return count
+    }
+
+    func updatePairs(_ value: String) {
+        switch value {
+        case "All":
+            theme.numOfPairs = .all
+        case "Random":
+            theme.numOfPairs = .random
+        case "Explicit":
+            theme.numOfPairs = .explicit(0)
+        default:
+            break
+        }
+    }
+
+    func incrementPairsCount(_ newValue: Int) {
+        theme.numOfPairs = .explicit(min(emojis.count, newValue))
+    }
+
+    func decrementPairsCount(_ newValue: Int) {
+        theme.numOfPairs = .explicit(newValue)
+    }
 }
