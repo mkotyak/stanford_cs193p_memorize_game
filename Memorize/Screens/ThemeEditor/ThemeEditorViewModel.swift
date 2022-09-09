@@ -13,6 +13,10 @@ class ThemeEditorViewModel: ObservableObject {
         theme.emojis
     }
 
+    var removedEmojis: [String] {
+        theme.removedEmojis
+    }
+
     var color: Color {
         switch theme.color {
         case "red":
@@ -52,9 +56,17 @@ class ThemeEditorViewModel: ObservableObject {
         theme.emojis.insert(String(emoji), at: 0)
     }
 
+    func returnBack(_ emoji: String) {
+        if let index = theme.removedEmojis.firstIndex(where: { $0.hashValue == emoji.hashValue }) {
+            let emojiToReturn = theme.removedEmojis.remove(at: index)
+            theme.emojis.insert(emojiToReturn, at: 0)
+        }
+    }
+
     func remove(_ emoji: String) {
         if let index = theme.emojis.firstIndex(where: { $0.hashValue == emoji.hashValue }) {
-            theme.emojis.remove(at: index)
+            let removedEmogi = theme.emojis.remove(at: index)
+            theme.removedEmojis.append(removedEmogi)
         }
     }
 

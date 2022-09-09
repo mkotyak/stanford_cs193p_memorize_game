@@ -28,6 +28,7 @@ struct ThemeEditorView: View {
             nameSection
             addEmojiSection
             removeEmojiSection
+            removedEmojiSection
             cardCountSection
             colorSection
         }
@@ -55,6 +56,20 @@ struct ThemeEditorView: View {
                     Text(emoji)
                         .onTapGesture {
                             viewModel.remove(emoji)
+                        }
+                }
+            }
+            .font(.system(size: 40))
+        }
+    }
+    
+    var removedEmojiSection: some View {
+        Section(header: Text("Removed emojis")) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
+                ForEach(viewModel.removedEmojis, id: \.self) { emoji in
+                    Text(emoji)
+                        .onTapGesture {
+                            viewModel.returnBack(emoji)
                         }
                 }
             }
