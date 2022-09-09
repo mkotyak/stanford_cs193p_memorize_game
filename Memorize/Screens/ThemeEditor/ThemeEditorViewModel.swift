@@ -13,6 +13,27 @@ class ThemeEditorViewModel: ObservableObject {
         theme.emojis
     }
 
+    var color: Color {
+        switch theme.color {
+        case "red":
+            return .red
+        case "orange":
+            return .orange
+        case "yellow":
+            return .yellow
+        case "green":
+            return .green
+        case "mint":
+            return .mint
+        case "blue":
+            return .blue
+        case "purple":
+            return .purple
+        default:
+            return .black
+        }
+    }
+
     init(theme: Binding<ThemeModel>) {
         self._theme = theme
     }
@@ -68,5 +89,26 @@ class ThemeEditorViewModel: ObservableObject {
 
     func decrementPairsCount(_ newValue: Int) {
         theme.numOfPairs = .explicit(newValue)
+    }
+
+    func applyColor(_ color: Color) {
+        switch color {
+        case .red:
+            theme.color = "red"
+        case .orange:
+            theme.color = "orange"
+        case .yellow:
+            theme.color = "yellow"
+        case .green:
+            theme.color = "green"
+        case .mint:
+            theme.color = "mint"
+        case .blue:
+            theme.color = "blue"
+        case .purple:
+            theme.color = "purple"
+        default:
+            theme.color = "black"
+        }
     }
 }
