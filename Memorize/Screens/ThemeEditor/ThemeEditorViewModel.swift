@@ -13,6 +13,31 @@ class ThemeEditorViewModel: ObservableObject {
         theme.emojis
     }
 
+    var removedEmojis: [String] {
+        theme.removedEmojis
+    }
+
+    var color: Color {
+        switch theme.color {
+        case "red":
+            return .red
+        case "orange":
+            return .orange
+        case "yellow":
+            return .yellow
+        case "green":
+            return .green
+        case "mint":
+            return .mint
+        case "blue":
+            return .blue
+        case "purple":
+            return .purple
+        default:
+            return .black
+        }
+    }
+
     init(theme: Binding<ThemeModel>) {
         self._theme = theme
     }
@@ -31,9 +56,17 @@ class ThemeEditorViewModel: ObservableObject {
         theme.emojis.insert(String(emoji), at: 0)
     }
 
+    func returnBack(_ emoji: String) {
+        if let index = theme.removedEmojis.firstIndex(where: { $0.hashValue == emoji.hashValue }) {
+            let emojiToReturn = theme.removedEmojis.remove(at: index)
+            theme.emojis.insert(emojiToReturn, at: 0)
+        }
+    }
+
     func remove(_ emoji: String) {
         if let index = theme.emojis.firstIndex(where: { $0.hashValue == emoji.hashValue }) {
-            theme.emojis.remove(at: index)
+            let removedEmogi = theme.emojis.remove(at: index)
+            theme.removedEmojis.append(removedEmogi)
         }
     }
 
@@ -68,5 +101,26 @@ class ThemeEditorViewModel: ObservableObject {
 
     func decrementPairsCount(_ newValue: Int) {
         theme.numOfPairs = .explicit(newValue)
+    }
+
+    func applyColor(_ color: Color) {
+        switch color {
+        case .red:
+            theme.color = "red"
+        case .orange:
+            theme.color = "orange"
+        case .yellow:
+            theme.color = "yellow"
+        case .green:
+            theme.color = "green"
+        case .mint:
+            theme.color = "mint"
+        case .blue:
+            theme.color = "blue"
+        case .purple:
+            theme.color = "purple"
+        default:
+            theme.color = "black"
+        }
     }
 }

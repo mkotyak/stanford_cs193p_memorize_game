@@ -1,12 +1,14 @@
 import SwiftUI
 
 struct ThemeEditorView: View {
-    var viewModel: ThemeEditorViewModel
     @State private var emojisToAdd = ""
-    @State var pairsValue: String
+    @State private var pairsValue: String
+    @State private var themeColor: Color
+    var viewModel: ThemeEditorViewModel
+    var colors: [Color] = [.red, .orange, .yellow, .green, .mint, .blue, .purple]
 
     init(theme: ThemeEditorViewModel, pairsValue: ThemeModel.NumOfPairs) {
-        var case: String {
+        var value: String {
             if pairsValue == .all {
                 return "All"
             } else if pairsValue == .random {
@@ -17,7 +19,8 @@ struct ThemeEditorView: View {
         }
 
         self.viewModel = theme
-        self.pairsValue = case
+        self.pairsValue = value
+        self.themeColor = viewModel.color
     }
 
     var body: some View {
@@ -25,6 +28,7 @@ struct ThemeEditorView: View {
             nameSection
             addEmojiSection
             removeEmojiSection
+            removedEmojiSection
             cardCountSection
             colorSection
         }
@@ -52,6 +56,20 @@ struct ThemeEditorView: View {
                     Text(emoji)
                         .onTapGesture {
                             viewModel.remove(emoji)
+                        }
+                }
+            }
+            .font(.system(size: 40))
+        }
+    }
+    
+    var removedEmojiSection: some View {
+        Section(header: Text("Removed emojis")) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
+                ForEach(viewModel.removedEmojis, id: \.self) { emoji in
+                    Text(emoji)
+                        .onTapGesture {
+                            viewModel.returnBack(emoji)
                         }
                 }
             }
@@ -95,6 +113,23 @@ struct ThemeEditorView: View {
     }
 
     var colorSection: some View {
-        Section(header: Text("Color")) {}
+        Section(header: Text("Color")) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
+                ForEach(colors, id: \.self) { color in
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 50, height: 70)
+                        .foregroundColor(color)
+                        .overlay(alignment: .bottomTrailing) {
+                            Image(systemName: "checkmark.circle")
+                                .opacity(themeColor == color ? 1 : 0)
+                                .padding(2)
+                        }
+                        .onTapGesture {
+                            themeColor = color
+                            viewModel.applyColor(color)
+                        }
+                }
+            }
+        }
     }
 }
