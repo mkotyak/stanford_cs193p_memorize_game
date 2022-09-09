@@ -3,13 +3,13 @@ import SwiftUI
 struct ThemeEditorView: View {
     var theme: ThemeEditorViewModel
     @State private var emojisToAdd = ""
-    @State var pairs: String
+    @State var pairsValue: String
 
-    init(theme: ThemeEditorViewModel, pairs: ThemeModel.NumOfPairs) {
+    init(theme: ThemeEditorViewModel, pairsValue: ThemeModel.NumOfPairs) {
         var num: String {
-            if pairs == .all {
+            if pairsValue == .all {
                 return "All"
-            } else if pairs == .random {
+            } else if pairsValue == .random {
                 return "Random"
             } else {
                 return "Explicit"
@@ -17,7 +17,7 @@ struct ThemeEditorView: View {
         }
 
         self.theme = theme
-        self.pairs = num
+        self.pairsValue = num
     }
 
     var body: some View {
@@ -63,7 +63,7 @@ struct ThemeEditorView: View {
         Section(header: Text("Card count")) {
             VStack {
                 HStack {
-                    Picker(selection: $pairs) {
+                    Picker(selection: $pairsValue) {
                         let numberCases = ["All", "Random", "Explicit"]
                         ForEach(numberCases, id: \.self) { numCase in
                             Text("\(numCase)")
@@ -72,12 +72,12 @@ struct ThemeEditorView: View {
                         Text("")
                     }
                     .pickerStyle(.segmented)
-                    .onChange(of: pairs) { newValue in
+                    .onChange(of: pairsValue) { newValue in
                         theme.updatePairs(newValue)
                     }
                 }
 
-                if pairs == "Explicit" {
+                if pairsValue == "Explicit" {
                     var count = theme.pairsCount()
 
                     Stepper("\(count) pairs") {
