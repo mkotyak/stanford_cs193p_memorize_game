@@ -13,4 +13,5 @@ struct ThemeModel: Identifiable, Codable {
     var numOfPairs: NumOfPairs
     var emojis: [String]
     var color: String
+    var removedEmojis: [String] = []
 }
